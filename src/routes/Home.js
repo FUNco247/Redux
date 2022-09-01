@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 function HomePage() {
   const [text, setText] = useState("");
@@ -24,7 +25,7 @@ function HomePage() {
   };
   return (
     <>
-      <h1>To Do</h1>
+      <h1>To Dos</h1>
       <form onSubmit={onSubmit}>
         <input type="text" value={text} onChange={onChange} />
         <button onClick={onClick}>Add</button>
@@ -32,7 +33,7 @@ function HomePage() {
       <ul>
         {currentState.map((state) => (
           <li key={state.id} id={state.id}>
-            {state.text}
+            <Link to={`${state.id}`}>{state.text}</Link>
             <button onClick={btnOnClick}>X</button>
           </li>
         ))}
