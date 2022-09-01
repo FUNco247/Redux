@@ -18,6 +18,10 @@ function HomePage() {
   };
   const currentState = useSelector((state) => state);
   //console.log(currentState);
+  const btnOnClick = (event) => {
+    const targetId = parseInt(event.target.parentNode.id);
+    dispatch({ type: "DELETE", id: targetId });
+  };
   return (
     <>
       <h1>To Do</h1>
@@ -27,7 +31,10 @@ function HomePage() {
       </form>
       <ul>
         {currentState.map((state) => (
-          <li key={state.id}>{state.text}</li>
+          <li key={state.id} id={state.id}>
+            {state.text}
+            <button onClick={btnOnClick}>X</button>
+          </li>
         ))}
       </ul>
     </>
