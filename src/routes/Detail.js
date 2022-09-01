@@ -9,6 +9,7 @@ export const DetailPage = () => {
   const onClickBackBtn = () => navigate(-1);
   const onClickHomeBtn = () => navigate("/");
   const todo = currentState.find((item) => item.id === parseInt(param.id));
+  const others = currentState.filter((todo) => todo.id !== parseInt(param.id));
   //console.log(todo);
   return (
     <>
@@ -16,7 +17,7 @@ export const DetailPage = () => {
       <b>자세한 설명은 생략한다.</b>
       <h2>Others</h2>
       <ul>
-        {currentState.map((todo) => (
+        {others.map((todo) => (
           <Link key={todo.id} to={`/${todo.id}`}>
             <li>{todo.text}</li>
           </Link>
