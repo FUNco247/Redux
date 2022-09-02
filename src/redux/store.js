@@ -1,5 +1,5 @@
 import { legacy_createStore as createStore } from "redux";
-import { createAction, createReducer } from "@reduxjs/toolkit";
+import { configureStore, createAction, createReducer } from "@reduxjs/toolkit";
 
 /* export const addToDo = (text, id) => {
   return {
@@ -40,6 +40,6 @@ const reducer = createReducer([], {
 // when you use createReducer func, you can mutate state .... "Immer" inside redux toolkit helps you, it will return new state
 // *So* when you mutate your state.. don't return it by your self. Let Immer do that
 
-const store = createStore(reducer);
-
+//const store = createStore(reducer);
+const store = configureStore({ reducer });
 export default store;
