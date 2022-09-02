@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { addToDo, deleteToDo } from "../redux/store";
 
 function HomePage() {
   const [text, setText] = useState("");
@@ -15,13 +16,14 @@ function HomePage() {
 
   const dispatch = useDispatch();
   const onClick = () => {
-    dispatch({ type: "ADD", text, id: Date.now() });
+    const id = Date.now();
+    dispatch(addToDo({ text, id })); // the way to set multiple data in payload
   };
   const currentState = useSelector((state) => state);
   //console.log(currentState);
   const btnOnClick = (event) => {
     const targetId = parseInt(event.target.parentNode.id);
-    dispatch({ type: "DELETE", id: targetId });
+    dispatch(deleteToDo(targetId));
   };
   return (
     <>
